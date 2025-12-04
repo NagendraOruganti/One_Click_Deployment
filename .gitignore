@@ -1,0 +1,6 @@
+.vscode
+.claude
+*lock.hcl
+*tfstate
+*.txt
+*.terraform

@@ -6,13 +6,12 @@ yum install -y java-17-amazon-corretto-headless awscli
 
 APP_DIR="/opt/demo-api"
 JAR_NAME="demo-api.jar"
-BUCKET="${app_s3_bucket}"
-KEY="${app_s3_key}"
 
 mkdir -p "$APP_DIR"
 cd "$APP_DIR"
 
-aws s3 cp "s3://${BUCKET}/${KEY}" "./${JAR_NAME}"
+# Use the variables passed from Terraform
+aws s3 cp "s3://${app_s3_bucket}/${app_s3_key}" "./$${JAR_NAME}"
 
 cat >/etc/systemd/system/demo-api.service <<EOF
 [Unit]
@@ -21,8 +20,8 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=${APP_DIR}
-ExecStart=/usr/bin/java -jar ${APP_DIR}/${JAR_NAME}
+WorkingDirectory=$${APP_DIR}
+ExecStart=/usr/bin/java -jar $${APP_DIR}/$${JAR_NAME}
 SuccessExitStatus=143
 Restart=always
 RestartSec=5
@@ -34,4 +33,3 @@ EOF
 systemctl daemon-reload
 systemctl enable demo-api
 systemctl start demo-api
-
