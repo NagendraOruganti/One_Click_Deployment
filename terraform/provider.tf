@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "devops-assignment-terraform-state"
+    bucket         = "devops-assignment-terraform-state-file"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "devops-assignment-terraform-locks"
