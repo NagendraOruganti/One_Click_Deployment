@@ -38,7 +38,7 @@ resource "aws_launch_template" "app_lt" {
 }
 
 resource "aws_autoscaling_group" "app_asg" {
-  name                = "${var.project_name}-asg"
+  name                = "${var.project_name}-asg-1"
   desired_capacity    = var.desired_capacity
   max_size            = var.max_capacity
   min_size            = var.min_capacity
