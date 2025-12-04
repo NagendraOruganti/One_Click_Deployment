@@ -9,7 +9,7 @@ public class ApiController {
     @GetMapping("/")
     public String root() {
         System.out.println("Root endpoint called");
-        return "Hello from Java REST API behind ALB + ASG!";
+        return "Hello from Java REST API behind ALB + ASG! V1";
     }
 
     @GetMapping("/health")
