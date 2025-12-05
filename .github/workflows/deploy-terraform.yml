@@ -16,8 +16,8 @@ on:
 env:
   AWS_REGION: us-east-1
   TF_WORKING_DIR: terraform
-  APP_S3_BUCKET: my-demo-api-artifacts
-  APP_S3_KEY: demo-api.jar
+  APP_S3_BUCKET: ${{ secrets.APP_S3_BUCKET }}
+  APP_S3_KEY: ${{ secrets.APP_S3_KEY }}
 
 jobs:
   terraform-plan:
